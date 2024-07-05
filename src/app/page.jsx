@@ -42,22 +42,23 @@ export default function Home() {
           <div className="w-[85%] rounded-md flex items-center h-14 bg-[#393b49] px-4 fixed top-24 gap-4">
             <FaRegCircle className="text-3xl text-[gray]" />
             <input
-              className="bg-inherit w-full h-full outline-none text-sm pt-1 text-[gray] font-bold"
+              className="bg-inherit w-full h-full outline-none text-base pt-1 text-[gray] font-bold"
               type="text"
               name="text"
               id="text"
               autoComplete="off"
-              placeholder="Create a new todo..."
+              placeholder="Add New Todo Item..."
               onChange={inputChange}
               value={inputValue}
               onKeyDown={handleSubmit}
             />
           </div>
 
-          <ul className="h-[50vh] overflow-y-auto fixed top-48">
+          <ul className="overflow-y-auto fixed top-40 bg-gray-600 rounded-lg divide-y-[1px] divide-slate-700 min-h-fit max-h-[50vh]">
             {todo.map((item, index) => (
-              <li key={index} className="my-1">
-                <div className="flex items-center justify-between min-w-[85vw] p-4 bg-red-600 rounded-md">
+              <li key={index} className="my-1"
+                >
+                <div className="flex items-center justify-between min-w-[85vw] p-4 cursor-pointer">
                   <div className="flex items-center justify-center gap-8" onClick={() => handleCheck(index)}>
                     <div>
                       <FaRegCircle
@@ -67,16 +68,26 @@ export default function Home() {
                         className={`${item.checked ? "text-2xl text-[blue] bg-blue-600 rounded-full" : "hidden"} transition-all duration-300 ease-in-out`}
                       />
                     </div>
-                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase" : ""} min-w-[50vw] max-w-[50vw] uppercase`}>
+                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase"  : ""} min-w-[50vw] max-w-[50vw] capitalize`}>
                       {item.text}
+
                     </div>
                   </div>
                   <div onClick={() => deleteItem(index)}>
                     <RiCloseLargeLine />
                   </div>
                 </div>
+                
               </li>
             ))}
+            <div className="">
+
+            <div className="fixed top-[30rem] flex justify-between items-center px-5 py-4 text-gray-400 border-t-[1px] border-slate-700">
+              <p>5 items left</p>
+
+              <button>Clear Completed</button>
+            </div>
+            </div>
           </ul>
           <Footer />
         </div>
