@@ -67,7 +67,7 @@ export default function Home() {
               id="text"
               autoComplete="off"
               placeholder="Add New Todo Item..."
-              maxLength={22}
+              maxLength={20}
               onChange={inputChange}
               value={inputValue}
               onKeyDown={handleSubmit}
