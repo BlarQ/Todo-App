@@ -10,6 +10,11 @@ import { RiCloseLargeLine } from "react-icons/ri";
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [todo, setTodo] = useState([]);
+  const [todoList, setTodoList] = useState(false)
+
+  const todoBtnCnt = () => {
+    setTodoList(!todoList)
+  }
 
   const inputChange = (e) => {
     setInputValue(e.target.value);
@@ -19,6 +24,7 @@ export default function Home() {
     if (e.key === 'Enter' && inputValue.trim() !== '') {
       setTodo([...todo, { text: inputValue, checked: false }]);
       setInputValue('');
+      setTodoList(true)
     }
   }
 
@@ -32,6 +38,19 @@ export default function Home() {
     const updatedTodo = [...todo];
     updatedTodo.splice(index, 1);
     setTodo(updatedTodo);
+  }
+
+  const clearCompleted = () => {
+    setTodo(todo.filter((item) => !item.checked ))
+  }
+
+  const deactivateClearBtn = () => {
+    const checkedTodos = todo.filter((item) => item.checked)
+    if (checkedTodos.length < 0) {
+      setClearBtnActive(false)
+    } else {
+      clearCompleted()
+    }
   }
 
   return (
@@ -68,7 +87,7 @@ export default function Home() {
                         className={`${item.checked ? "text-2xl text-[blue] bg-blue-600 rounded-full" : "hidden"} transition-all duration-300 ease-in-out`}
                       />
                     </div>
-                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase"  : ""} min-w-[50vw] max-w-[50vw] capitalize`}>
+                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase"  : ""} min-w-[50vw] max-w-[90vw] capitalize`}>
                       {item.text}
 
                     </div>
@@ -80,15 +99,16 @@ export default function Home() {
                 
               </li>
             ))}
-            <div className="">
+            {todo.length > 0 && 
 
-            <div className="fixed top-[30rem] flex justify-between items-center px-5 py-4 text-gray-400 border-t-[1px] border-slate-700">
-              <p>5 items left</p>
+              <div className={`${todoBtnCnt ? "flex justify-between items-center py-4 text-gray-400 border-t-[1px] border-slate-700 w-full px-5" : 'hidden'}`}>
+                <p>{todo.length} items left</p>
 
-              <button>Clear Completed</button>
-            </div>
-            </div>
+                <button onClick={() => deactivateClearBtn()} >Clear Completed</button>
+              </div>
+            }
           </ul>
+          
           <Footer />
         </div>
       </div>

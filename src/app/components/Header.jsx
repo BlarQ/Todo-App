@@ -19,7 +19,7 @@ export default function Header() {
         <div className="font-extrabold tracking-[0.2em]">TODO</div>
         {/* <IoSunny /> */}
 
-        <div onClick={themeSelect}>
+        <div onClick={themeSelect} className='cursor-pointer transition-transform ease-out duration-700'>
             {theme ? 
               <Moon />
               : 
