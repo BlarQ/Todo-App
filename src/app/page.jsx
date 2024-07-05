@@ -78,7 +78,7 @@ export default function Home() {
               <li key={index} className="my-1"
                 >
                 <div className="flex items-center justify-between min-w-[85vw] p-4 cursor-pointer">
-                  <div className="flex items-center justify-center gap-8" onClick={() => handleCheck(index)}>
+                  <div className="flex items-center justify-center gap-4" onClick={() => handleCheck(index)}>
                     <div>
                       <FaRegCircle
                         className={`${!item.checked ? "text-2xl text-[gray]" : "hidden"} transition-all duration-300 ease-in-out`}
