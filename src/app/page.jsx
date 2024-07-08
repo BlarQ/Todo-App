@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { useState } from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { RiCloseLargeLine } from "react-icons/ri";
+import Link from "next/link";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
@@ -88,7 +89,7 @@ export default function Home() {
                         className={`${item.checked ? "text-2xl text-[blue] bg-blue-600 rounded-full" : "hidden"} transition-all duration-300 ease-in-out`}
                       />
                     </div>
-                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase"  : ""} min-w-[50vw] sm:min-w-0 max-w-[90vw] capitalize`}>
+                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase"  : ""} min-w-[50vw] sm:min-w-[20vw] max-w-[90vw] capitalize`}>
                       {item.text}
 
                     </div>
@@ -104,6 +105,12 @@ export default function Home() {
 
               <div className={`${todoBtnCnt ? "flex justify-between items-center py-4 text-gray-400 border-t-[1px] border-slate-700 w-full px-5" : 'hidden'}`}>
                 <p>{todo.length} items left</p>
+
+                <div className='hidden sm:flex items-center justify-center gap-3 rounded-md'>
+                  <Link href='/'>All</Link>
+                  <Link href='/'>Active</Link>
+                  <Link href='/'>Completed</Link>
+                </div>
 
                 <button onClick={() => deactivateClearBtn()} >Clear Completed</button>
               </div>
