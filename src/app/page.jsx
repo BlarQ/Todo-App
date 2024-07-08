@@ -58,7 +58,7 @@ export default function Home() {
       <div className="relative bg-[url('/bg-desktop-dark.jpg')] bg-no-repeat bg-cover h-[250px] sm:h-[180px] w-[100%]">
         <div className="absolute w-full min-h-screen text-white flex justify-center items-center flex-col">
           <Header />
-          <div className="w-[85%] rounded-md flex items-center h-14 bg-[#393b49] px-4 fixed top-24 gap-4">
+          <div className="w-[85%] sm:w-[35%] rounded-md flex items-center h-14 bg-[#393b49] px-4 fixed top-24 gap-4">
             <FaRegCircle className="text-3xl text-[gray]" />
             <input
               className="bg-inherit w-full h-full outline-none text-base pt-1 text-[gray] font-bold"
@@ -74,11 +74,11 @@ export default function Home() {
             />
           </div>
 
-          <ul className="overflow-y-auto fixed top-40 bg-gray-600 rounded-lg divide-y-[1px] divide-slate-700 min-h-fit max-h-[50vh]">
+          <ul className="overflow-y-auto fixed top-40 bg-gray-600 rounded-lg divide-y-[1px] divide-slate-700 min-h-fit max-h-[50vh] sm:max-w-[35%] w-[85vw] ">
             {todo.map((item, index) => (
               <li key={index} className="my-1"
                 >
-                <div className="flex items-center justify-between min-w-[85vw] p-4 cursor-pointer">
+                <div className="flex items-center justify-between  p-4 cursor-pointer group">
                   <div className="flex items-center justify-center gap-4" onClick={() => handleCheck(index)}>
                     <div>
                       <FaRegCircle
@@ -88,13 +88,13 @@ export default function Home() {
                         className={`${item.checked ? "text-2xl text-[blue] bg-blue-600 rounded-full" : "hidden"} transition-all duration-300 ease-in-out`}
                       />
                     </div>
-                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase"  : ""} min-w-[50vw] max-w-[90vw] capitalize`}>
+                    <div className={`${item.checked ? "line-through text-gray-400 font-bold uppercase"  : ""} min-w-[50vw] sm:min-w-0 max-w-[90vw] capitalize`}>
                       {item.text}
 
                     </div>
                   </div>
                   <div onClick={() => deleteItem(index)}>
-                    <RiCloseLargeLine />
+                    <RiCloseLargeLine className="hidden group-hover:flex group-hover:duration-700"/>
                   </div>
                 </div>
                 

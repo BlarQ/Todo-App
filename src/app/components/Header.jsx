@@ -15,7 +15,7 @@ export default function Header() {
   }
 
   return (
-    <div className="flex items-start justify-between w-full sm:w-[40%] text-3xl px-7 py-8 fixed top-2">
+    <div className="flex items-start justify-between w-full sm:w-[40%] text-3xl px-7 sm:px-10 py-8 fixed top-2 sm:top-4">
         <div className="font-extrabold tracking-[0.2em]">TODO</div>
         {/* <IoSunny /> */}
 
