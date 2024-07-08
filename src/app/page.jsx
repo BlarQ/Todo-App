@@ -63,7 +63,7 @@ export default function Home() {
     <main className={`flex flex-col min-h-screen items-center justify-between bg-no-repeat ${theme ? 'bg-[whitesmoke] text-black' : 'bg-[#171926]'}`}>
       <div className={`relative bg-[url('/bg-desktop-dark.jpg')] bg-no-repeat bg-cover h-[220px] sm:h-[220px] w-[100%] ${theme ? 'bg-[url("/bg-desktop-light.jpg")] bg-no-repeat bg-cover' : 'bg-[url("/bg-desktop-dark.jpg")] bg-no-repeat bg-cover'}`}>
         <div className="absolute w-full min-h-screen text-white flex justify-center items-center flex-col">
-          <Header onThemeChange={() => handleThemeChange(newTheme)}/>
+          <Header onThemeChange={handleThemeChange}/>
           <div className={`w-[85%] sm:w-[35%] rounded-md flex items-center h-14 bg-[#393b49] px-4 fixed top-24 gap-4  ${theme ? 'bg-white' : ''}`}>
             <FaRegCircle className="text-3xl text-[gray]" />
             <input
