@@ -7,11 +7,12 @@ import Sun from './Sun'
 import Moon from './Moon'
 
 
-export default function Header() {
+export default function Header({ onThemeChange }) {
   const [theme, setTheme] = useState(false)
 
   function themeSelect() {
     setTheme(!theme)
+    onThemeChange(!theme)
   }
 
   return (
